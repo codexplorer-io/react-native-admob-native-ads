@@ -490,6 +490,18 @@ declare module "react-native-admob-native-ads" {
    */
   export function StarRatingView(props: StarViewProps): JSX.Element;
 
+  export function RnAdMobButton(props: {
+    buttonAndroidStyle?: CallToActionViewProps['buttonAndroidStyle'];
+    title: string;
+  }): JSX.Element;
+
+  export const NativeAdContext: Context<{
+    nativeAd?: NativeAd;
+    nativeAdView?: NativeAdView;
+    setNativeAdView: (view: NativeAdView) => void;
+    setNativeAd: (ad: NativeAd) => void;
+  }>;
+
   export const TestIds: {
     Video: string;
     Image: string;

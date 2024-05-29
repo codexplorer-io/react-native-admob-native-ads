@@ -12,6 +12,8 @@ import AdBadge from "./src/AdBadge";
 import NativeAdView from './src';
 import {AdOptions} from "./src/utils"
 import AdManager from "./src/AdManager"
+import { NativeAdContext } from './src/context'
+import { RnAdMobButton } from './src/RnAdMobButton'
 import { Platform } from 'react-native';
 export default NativeAdView;
 
@@ -40,6 +42,8 @@ export {
   AdBadge,
   AdOptions,
   AdManager,
+  NativeAdContext,
+  RnAdMobButton,
   TestIds
 }
 
