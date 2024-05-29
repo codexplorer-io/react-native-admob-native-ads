@@ -9,6 +9,7 @@ import {
   View,
 } from "react-native";
 import { NativeAdContext } from "./context";
+import { RnAdMobButton } from "./RnAdMobButton";
 const CallToActionView = ({
   style,
   allowFontScaling = true,
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
 
 const ButtonView =
   Platform.OS === "android"
-    ? requireNativeComponent("RNAdmobButton")
+    ? RnAdMobButton
     : TouchableOpacity;
 
 export default CallToActionView;
