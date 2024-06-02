@@ -9,13 +9,13 @@ const withAdmobNativeAdsAppBuildGradle = (config: any, props: any) => withDanger
         const build = resolve(platformProjectRoot, 'app/build.gradle');
         const contents = readFileSync(build, 'utf-8');
         const lines = contents.split('\n');
-        const index = lines.findIndex((line: any) => /dependencies\s{/.test(line));
+        const index = lines.findIndex((line: any) => /ext\s{/.test(line));
 
         writeFileSync(
             build,
             [
                 ...lines.slice(0, index + 1),
-                `    implementation "com.google.android.gms:play-services-ads:${props.androidGoogleMobileAdsVersion}"`,
+                `        googlePlayServicesAdsVersion = "${props.androidGoogleMobileAdsVersion}"`,
                 ...lines.slice(index + 1)
             ].join('\n')
         );
