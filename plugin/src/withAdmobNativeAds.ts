@@ -8,7 +8,7 @@ const pkg = require("react-native-admob-native-ads/package.json");
 
 const withAdmobNativeAds: ConfigPlugin = (config, props) => {
   config = withAdmobNativeAdsAndroid(config, props);
-  // config = withAdmobNativeAdsGradle(config, props);
+  config = withAdmobNativeAdsGradle(config, props);
   config = withAdmobNativeAdsPlist(config, props);
   config = withAdmobNativeAdsPodNat(config, props);
   return config;
