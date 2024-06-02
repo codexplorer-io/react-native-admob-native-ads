@@ -1,27 +1,12 @@
-import { withDangerousMod } from '@expo/config-plugins';
-import { resolve } from 'path';
-import { writeFileSync, readFileSync } from 'fs';
+import { withProjectBuildGradle } from '@expo/config-plugins';
 
-const withAdmobNativeAdsAppBuildGradle = (config: any, props: any) => withDangerousMod(config, [
-    'android',
-    (cfg: any) => {
-        const { platformProjectRoot } = cfg.modRequest;
-        const build = resolve(platformProjectRoot, 'app/build.gradle');
-        const contents = readFileSync(build, 'utf-8');
-        const lines = contents.split('\n');
-        const index = lines.findIndex((line: any) => /ext\s{/.test(line));
-
-        writeFileSync(
-            build,
-            [
-                ...lines.slice(0, index + 1),
-                `        googlePlayServicesAdsVersion = "${props.androidGoogleMobileAdsVersion}"`,
-                ...lines.slice(index + 1)
-            ].join('\n')
+export const withAdmobNativeAdsGradle = (config: any, props: any) => withProjectBuildGradle(
+    config,
+    (config: any) => {
+        config.modResults.contents = config.modResults.contents.replace(
+            /ext\s{/,
+            `ext {\n        googlePlayServicesAdsVersion = "${props.androidGoogleMobileAdsVersion}"`
         );
-
-        return cfg;
+        return config;
     }
-]);
-
-export const withAdmobNativeAdsGradle = (config: any, props: any) => withAdmobNativeAdsAppBuildGradle(config, props);
+);
