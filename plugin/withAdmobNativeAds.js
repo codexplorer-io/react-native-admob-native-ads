@@ -7,4 +7,4 @@ const withAdmobNativeAds = (config, props) => {
   return config;
 };
 
-export default createRunOncePlugin(withAdmobNativeAds, pkg.name, pkg.version);
+module.exports = createRunOncePlugin(withAdmobNativeAds, pkg.name, pkg.version);
