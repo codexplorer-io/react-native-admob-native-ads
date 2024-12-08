@@ -1,6 +1,6 @@
 const { withProjectBuildGradle } = require('@expo/config-plugins');
 
-export const withAdmobNativeAdsGradle = (config, props) => withProjectBuildGradle(
+const withAdmobNativeAdsGradle = (config, props) => withProjectBuildGradle(
     config,
     (config) => {
         config.modResults.contents = config.modResults.contents.replace(
@@ -10,3 +10,7 @@ export const withAdmobNativeAdsGradle = (config, props) => withProjectBuildGradl
         return config;
     }
 );
+
+module.exports = {
+    withAdmobNativeAdsGradle
+};
