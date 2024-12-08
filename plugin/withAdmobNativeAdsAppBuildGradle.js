@@ -1,8 +1,8 @@
-import { withProjectBuildGradle } from '@expo/config-plugins';
+const { withProjectBuildGradle } = require('@expo/config-plugins');
 
-export const withAdmobNativeAdsGradle = (config: any, props: any) => withProjectBuildGradle(
+export const withAdmobNativeAdsGradle = (config, props) => withProjectBuildGradle(
     config,
-    (config: any) => {
+    (config) => {
         config.modResults.contents = config.modResults.contents.replace(
             /ext\s{/,
             `ext {\n        googlePlayServicesAdsVersion = "${props.androidGoogleMobileAdsVersion}"`
